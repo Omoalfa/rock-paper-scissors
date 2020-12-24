@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Rock wins against scissors, paper wins against rock, and scissors wins against paper
+        const computerPlays = () => {
+            const value = ['rock', 'paper', 'scissors'];
+            return value[Math.floor(Math.random() * Math.floor(3))];
+        }
+
+        let playerPlays = prompt("rock, paper or scissors??");
+
+        const playGame = (player1, player2) => {
+            if (player1.toLowerCase() === 'rock' || player1.toLowerCase() === 'paper' || player1.toLowerCase() === 'scissors') {
+                if (player1.toLowerCase() === player2.toLowerCase()) {
+                   return 'That was a tie'
+                } else if (player1.toLowerCase() === 'rock' && player2.toLowerCase() === 'scissors') {
+                   return player1
+                } else if (player1.toLowerCase() === 'paper' && player2.toLowerCase() === 'rock') {
+                   return player1
+                } else if (player1.toLowerCase() === 'scissors' && player2.toLowerCase() === 'paper') {
+                   return player1
+                } else {
+                   return player2
+                }
+            } else {
+              return "invalid input, refresh the page and try again!!!"
+            }
+            
+        }
+
+
+        const Game = (player1, player2) => {
+            const you = [];
+            const computer = [];
+            for (i=0; i<5; i++) {
+                let x = playGame(player1, player2);
+                if (x === player1) {
+                    you.push('win')
+                } else if (x === 'that was a tie') {
+                    you.push('draw');
+                    computer.push('draw');
+                } else {
+                    computer.push('win');
+                }
+
+                if (you.length > computer.length) {
+                    return 'you win'
+                } else if (you.length < computer.length) {
+                    return 'you loose'
+                } else {
+                    'it was a tie'
+                }
+            }
+
+        }
+        
+        console.log(Game(playerPlays, computerPlays()));
+    </script>
+</body>
+</html>
